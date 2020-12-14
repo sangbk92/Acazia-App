@@ -30,8 +30,8 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     @Inject
     LoginMvpPresenter<LoginMvpView> mPresenter;
 
-    @BindView(R.id.et_email)
-    EditText mEmailEditText;
+    @BindView(R.id.et_account)
+    EditText mAccountEditText;
 
     @BindView(R.id.et_password)
     EditText mPasswordEditText;
@@ -55,7 +55,7 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
 
     @OnClick(R.id.btn_server_login)
     void onServerLoginClick(View v) {
-        mPresenter.onServerLoginClick(mEmailEditText.getText().toString(),
+        mPresenter.onServerLoginClick(mAccountEditText.getText().toString(),
                 mPasswordEditText.getText().toString());
     }
 

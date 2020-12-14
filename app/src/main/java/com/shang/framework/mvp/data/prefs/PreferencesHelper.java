@@ -4,8 +4,10 @@ package com.shang.framework.mvp.data.prefs;
 import com.shang.framework.mvp.data.DataManager;
 
 /**
- * Created by janisharali on 27/01/17.
- */
+* Created by sangbk92 on 14-12-2020.
+*/
+
+
 
 public interface PreferencesHelper {
 

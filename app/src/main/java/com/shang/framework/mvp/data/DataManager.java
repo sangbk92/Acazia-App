@@ -25,6 +25,8 @@ public interface DataManager extends DbHelper, PreferencesHelper, ApiHelper {
 
     Observable<Boolean> seedDatabaseOptions();
 
+    Observable<Boolean> testLogin();
+
     void updateUserInfo(
             String accessToken,
             Long userId,

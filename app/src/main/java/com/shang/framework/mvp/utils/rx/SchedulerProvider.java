@@ -3,8 +3,10 @@ package com.shang.framework.mvp.utils.rx;
 import io.reactivex.Scheduler;
 
 /**
- * Created by hrskrs on 5/8/2017.
- */
+* Created by sangbk92 on 14-12-2020.
+*/
+
+
 
 public interface SchedulerProvider {
 

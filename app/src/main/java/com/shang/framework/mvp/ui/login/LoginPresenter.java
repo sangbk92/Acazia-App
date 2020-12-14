@@ -1,6 +1,9 @@
 
 package com.shang.framework.mvp.ui.login;
 
+import android.os.Build;
+import android.telephony.PhoneNumberUtils;
+
 import com.androidnetworking.error.ANError;
 import com.shang.framework.mvp.R;
 import com.shang.framework.mvp.data.DataManager;
@@ -9,6 +12,8 @@ import com.shang.framework.mvp.data.network.model.LoginResponse;
 import com.shang.framework.mvp.ui.base.BasePresenter;
 import com.shang.framework.mvp.utils.CommonUtils;
 import com.shang.framework.mvp.utils.rx.SchedulerProvider;
+
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -34,24 +39,35 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
     }
 
     @Override
-    public void onServerLoginClick(String email, String password) {
-        //validate email and password
-        if (email == null || email.isEmpty()) {
-            getMvpView().onError(R.string.empty_email);
+    public void onServerLoginClick(String account, String password) {
+        //validate account and password
+        if (account == null || account.isEmpty()) {
+            getMvpView().onError(R.string.empty_account);
             return;
         }
-        if (!CommonUtils.isEmailValid(email)) {
-            getMvpView().onError(R.string.invalid_email);
-            return;
+
+        if (!CommonUtils.isEmailValid(account)) {
+            String formattedNumber;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                formattedNumber = PhoneNumberUtils.formatNumber(account, Locale.getDefault().getCountry());
+            } else {
+                formattedNumber = PhoneNumberUtils.formatNumber(account);
+            }
+
+            if (!PhoneNumberUtils.isGlobalPhoneNumber(formattedNumber)) {
+                getMvpView().onError(R.string.invalid_account);
+                return;
+            }
         }
-        if (password == null || password.isEmpty()) {
+
+        if (password == null || password.isEmpty() || password.length() <= 8) {
             getMvpView().onError(R.string.empty_password);
             return;
         }
         getMvpView().showLoading();
 
         getCompositeDisposable().add(getDataManager()
-                .doServerLoginApiCall(new LoginRequest.ServerLoginRequest(email, password))
+                .doServerLoginApiCall(new LoginRequest.ServerLoginRequest(account, password))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<LoginResponse>() {

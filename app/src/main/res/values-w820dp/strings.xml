@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_header">Welcome Back!</string>
+    <string name="login_form">Login with</string>
+    <string name="phone">Your phone number</string>
+</resources>

@@ -39,16 +39,10 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V>
         getMvpView().startSyncService();
 
         getCompositeDisposable().add(getDataManager()
-                .seedDatabaseQuestions()
-                .delay(5, TimeUnit.SECONDS)
+                .testLogin()
+                .delay(3, TimeUnit.SECONDS)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .concatMap(new Function<Boolean, ObservableSource<Boolean>>() {
-                    @Override
-                    public ObservableSource<Boolean> apply(Boolean aBoolean) throws Exception {
-                        return getDataManager().seedDatabaseOptions();
-                    }
-                })
                 .subscribe(new Consumer<Boolean>() {
                     @Override
                     public void accept(Boolean aBoolean) throws Exception {

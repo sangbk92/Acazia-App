@@ -260,6 +260,15 @@ public class AppDataManager implements DataManager {
                 });
     }
 
+    /**
+     * Just fire a "true" value to test
+     * @return
+     */
+    @Override
+    public Observable<Boolean> testLogin() {
+        return Observable.just(true);
+    }
+
     @Override
     public Observable<Boolean> seedDatabaseOptions() {
 

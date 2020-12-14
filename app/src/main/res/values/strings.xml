@@ -32,9 +32,9 @@
     <string name="password">Password</string>
 
     <!--Login Validation-->
-    <string name="empty_email">Please provide a non empty email.</string>
-    <string name="invalid_email">Please provide a valid email.</string>
-    <string name="empty_password">Please provide a non empty password.</string>
+    <string name="empty_account">Please provide a non empty email/number.</string>
+    <string name="invalid_account">Please provide a valid email/number.</string>
+    <string name="empty_password">Please provide a valid password.(Must be greater than 8 characters)</string>
 
     <!--about fragment-->
     <string name="project_info">This sample app implements MVP architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking and PlaceholderView</string>
@@ -70,5 +70,8 @@
     <string name="empty_screen">We do not have anything\nhere right now.</string>
     <string name="please_retry">Please Retry</string>
     <string name="retry">Retry</string>
+    <string name="welcome_header">Welcome Back!</string>
+    <string name="login_form">Login with</string>
+    <string name="phone">Your phone number</string>
 
 </resources>

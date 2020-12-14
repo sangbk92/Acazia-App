@@ -8,8 +8,10 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by janisharali on 28/01/17.
- */
+* Created by sangbk92 on 14-12-2020.
+*/
+
+
 
 public class BlogResponse {
 

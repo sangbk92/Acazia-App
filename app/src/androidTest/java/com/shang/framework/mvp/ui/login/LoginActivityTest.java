@@ -48,7 +48,7 @@ public class LoginActivityTest {
     public void checkViewsDisplay() {
         main.launchActivity(LoginActivity.getStartIntent(component.getContext()));
 
-        onView(withId(R.id.et_email))
+        onView(withId(R.id.et_account))
                 .check(matches(isDisplayed()));
 
         onView(withId(R.id.et_password))
